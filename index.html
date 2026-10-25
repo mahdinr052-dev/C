@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazy World</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Tahoma, sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #1f051c; color: #fff; padding: 15px; }
+        .panel { background: rgba(30, 15, 25, 0.96); border: 2px solid rgba(255, 105, 180, 0.5); border-radius: 20px; padding: 20px; width: 100%; max-width: 380px; text-align: center; }
+        
+        /* افکت چشمک‌زن و خیره‌کننده متحرک برای عنوان */
+        .title { 
+            font-size: 21px; 
+            font-weight: bold; 
+            margin-bottom: 15px; 
+            direction: ltr; 
+            animation: blinkGlow 1.5s infinite alternate; 
+        }
+        @keyframes blinkGlow {
+            0% { 
+                color: #ff69b4; 
+                text-shadow: 0 0 5px rgba(255, 105, 180, 0.4), 0 0 10px rgba(255, 105, 180, 0.2); 
+            }
+            100% { 
+                color: #ff1493; 
+                text-shadow: 0 0 15px rgba(255, 20, 147, 0.9), 0 0 25px rgba(0, 206, 209, 0.8); 
+            }
+        }
+
+        .subtitle { font-size: 14px; margin-bottom: 12px; color: #ffb6c1; font-weight: bold; }
+        .btn { display: block; width: 100%; padding: 12px; margin: 6px 0; background: rgba(255, 105, 180, 0.2); border: 1px solid rgba(255, 105, 180, 0.4); border-radius: 10px; color: #fff; font-size: 14px; font-weight: bold; cursor: pointer; text-decoration: none; text-align: center; }
+        .btn:active { background: rgba(255, 105, 180, 0.8); }
+        .input-box { width: 100%; padding: 10px; margin: 8px 0; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 105, 180, 0.4); border-radius: 8px; color: #fff; font-size: 14px; text-align: center; outline: none; }
+        .gender-row { display: flex; gap: 8px; margin: 8px 0; }
+        .g-btn { flex: 1; padding: 10px; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 105, 180, 0.4); border-radius: 8px; color: #fff; font-size: 13px; cursor: pointer; }
+        .g-btn.active { background: rgba(255, 20, 147, 0.9); border-color: #ff69b4; font-weight: bold; }
+        .view { display: none; }
+        .view.active { display: block; }
+        .box { background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 182, 193, 0.3); border-radius: 10px; padding: 15px; margin: 10px 0; font-size: 16px; line-height: 1.8; color: #ffda79; text-align: center; font-weight: bold; }
+        
+        @keyframes spinWheel {
+            0% { transform: rotate(0deg) scale(1); opacity: 0.5; }
+            50% { transform: rotate(360deg) scale(1.05); opacity: 0.8; color: #00ffcc; }
+            100% { transform: rotate(720deg) scale(1); opacity: 1; }
+        }
+        .spinning { animation: spinWheel 0.8s ease-in-out; }
+
+        .footer { margin-top: 12px; font-size: 12px; color: #ffb6c1; font-weight: bold; }
+        .footer a { color: #ff69b4; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <div class="panel">
+        <div class="title">꧁⚜️✧𝑪𝒓𝒂𝒛𝔂 𝑾𝒐𝒓𝒍𝒅✧⚜️꧂</div>
+
+        <!-- صفحه ۱: منو -->
+        <div id="p-home" class="view active">
+            <div class="subtitle">بخش مورد نظر را انتخاب کنید:</div>
+            <button class="btn" onclick="go('p-fortune')" style="background: rgba(255, 20, 147, 0.5);">💖 فال و شعر عاشقانه</button>
+            <button class="btn" onclick="go('p-couple')" style="background: rgba(199, 21, 133, 0.5);">🎡 گردونه جفت‌یاب (روزانه)</button>
+            <a href="https://taw-bio.ir/Font/Generator/Latin" target="_blank" rel="noopener" class="btn" style="background: rgba(138, 43, 226, 0.5);">👑 سازنده لقب و اسم لاکچری</a>
+            <a href="https://ghab24.com/media/" target="_blank" rel="noopener" class="btn" style="background: rgba(0, 206, 209, 0.5);">🖼️ تصویر زمینه 4K</a>
+            <a href="https://musics-fa.com/download-songs/" target="_blank" rel="noopener" class="btn" style="background: rgba(255, 140, 0, 0.5);">🎵 آهنگ‌یاب و موزیک</a>
+            <a href="https://www.uptvs.com/" target="_blank" rel="noopener" class="btn" style="background: rgba(50, 205, 50, 0.5);">🎬 فیلم و سریال</a>
+            <a href="https://www.farsroid.com/" target="_blank" rel="noopener" class="btn" style="background: rgba(220, 20, 60, 0.5);">📱 برنامه و بازی پرمیوم رایگان</a>
+            <a href="https://translate.google.com/?hl=fa&sl=auto&tl=fa&op=translate" target="_blank" rel="noopener" class="btn" style="background: rgba(65, 105, 225, 0.5);">🌐 مترجم آنلاین</a>
+            <a href="https://t.me/gap_Crazyworld" target="_blank" rel="noopener" class="btn" style="background: rgba(0, 136, 204, 0.6);">👥 گروه تلگرام Crazy World</a>
+        </div>
+
+        <!-- فال -->
+        <div id="p-fortune" class="view">
+            <div class="subtitle">✨ فال و دیوان شعر عاشقانه ✨</div>
+            <input type="text" id="f-name" class="input-box" placeholder="نام خود را وارد کنید...">
+            <div class="gender-row">
+                <button class="g-btn active" id="g-m" onclick="setGender('m')">پسر 👨</button>
+                <button class="g-btn" id="g-f" onclick="setGender('f')">دختر 👩</button>
+            </div>
+            <button class="btn" onclick="runFortune()" style="background: rgba(255, 20, 147, 0.7);">🔮 گرفتن فال</button>
+            <button class="btn" onclick="go('p-home')">⬅️ بازگشت به منو</button>
+        </div>
+
+        <!-- نتیجه فال -->
+        <div id="p-f-res" class="view">
+            <div id="f-head" class="subtitle"></div>
+            <div id="f-body" class="box" style="color: #fff; font-weight: normal; font-size: 14px;"></div>
+            <button class="btn" onclick="runFortune()">🔄 فال مجدد</button>
+            <button class="btn" onclick="go('p-home')">⬅️ بازگشت به منو</button>
+        </div>
+
+        <!-- گردونه جفت‌یاب -->
+        <div id="p-couple" class="view">
+            <div class="subtitle">🎡 گردونه جفت‌یاب (اختصاصی هر اسم)</div>
+            <input type="text" id="c-name" class="input-box" placeholder="نام خود را وارد کنید (فارسی/انگلیسی)..." oninput="checkUserTimer()">
+            <div class="gender-row">
+                <button class="g-btn active" id="cg-m" onclick="setCoupleGender('m')">پسر هستم 👨</button>
+                <button class="g-btn" id="cg-f" onclick="setCoupleGender('f')">دختر هستم 👩</button>
+            </div>
+            <button class="btn" id="spin-btn" onclick="spinWheel()" style="background: rgba(199, 21, 133, 0.7);">🎡 چرخش گردونه شانس</button>
+            <div id="timer-msg" style="font-size: 12px; color: #ff69b4; margin-top: 8px; font-weight: bold;"></div>
+            <button class="btn" onclick="go('p-home')" style="margin-top: 10px;">⬅️ بازگشت به منو</button>
+        </div>
+
+        <!-- نتیجه گردونه جفت‌یاب -->
+        <div id="p-c-res" class="view">
+            <div id="c-head" class="subtitle"></div>
+            <div id="c-body" class="box"></div>
+            <div id="timer-msg-res" style="font-size: 12px; color: #ff69b4; margin-top: 8px; font-weight: bold;"></div>
+            <button class="btn" onclick="go('p-home')" style="margin-top: 15px;">⬅️ بازگشت به منو</button>
+        </div>
+
+        <div class="footer">طراح پنل: <a href="https://t.me/mahdi_shokrian" target="_blank" rel="noopener">📱 @mahdi_shokrian</a></div>
+    </div>
+
+    <script>
+        function go(id) {
+            var views = document.querySelectorAll('.view');
+            for (var i = 0; i < views.length; i++) { views[i].classList.remove('active'); }
+            document.getElementById(id).classList.add('active');
+        }
+
+        var selectedGender = 'm';
+        function setGender(g) {
+            selectedGender = g;
+            document.getElementById('g-m').className = (g === 'm') ? 'g-btn active' : 'g-btn';
+            document.getElementById('g-f').className = (g === 'f') ? 'g-btn active' : 'g-btn';
+        }
+
+        var coupleGender = 'm';
+        function setCoupleGender(g) {
+            coupleGender = g;
+            document.getElementById('cg-m').className = (g === 'm') ? 'g-btn active' : 'g-btn';
+            document.getElementById('cg-f').className = (g === 'f') ? 'g-btn active' : 'g-btn';
+        }
+
+        var mPoems = [
+            "ای سوار میدان عشق، روزگارت روشن! خورشید بخت به روی {n} لبخند می‌زند.",
+            "مرد آن است که در کشاکش روزگار خم به ابرو نیاورد. فال {n} نشان از گشایش و پیروزی بزرگ دارد.",
+            "ای {n} عزیز، همت بلند دار که مردان بزرگ جهان با اراده به مقصد می‌رسند.",
+            "ستاره بخت {n} در آسمان موفقیت می‌درخشد و آینده‌ای پر از افتخار در انتظار اوست.",
+            "ای {n}، قامتت به استواری کوه و دلت به وسعت دریاست؛ روزگاری خوش در پیش داری.",
+            "باد صبا خبر از موفقیت‌های بزرگ برای {n} می‌آورد؛ آماده باش که پیروزی نزدیک است.",
+            "ای {n}، شاهین اقبال بر شانه‌هایت خواهد نشست و تلاش‌هایت به ثمر خواهد رسید.",
+            "روزگار با {n} یار است و غبار غم از چهره‌اش پاک خواهد شد.",
+            "ای {n} دلاور، عزم راسخ تو کلید گشایش تمام قفل‌های بسته زندگی است.",
+            "نقش بر آب نخواهد شد تلاش‌های {n}؛ به زودی ثمره صبرت را خواهی دید.",
+            "ای {n}، طالع تو امروز بر مدار سعادت و خوشبختی می‌چرخد.",
+            "مرد روزهای سخت، ای {n}، بدان که پس از هر تاریکی، خورشید پیروزی می‌تابد.",
+            "نسیم پیروزی به سوی {n} می‌وزد و درها به رویت گشوده خواهد شد.",
+            "ای {n}، گام‌هایت را استوار بردار که فردا روز توست.",
+            "فرشته اقبال نگاهی ویژه به {n} دارد؛ به زودی خبری خوش می‌شنوی.",
+            "ای {n}، اعتبار مرد به سخن اوست و طالع تو نشان از راستی و کامیابی دارد.",
+            "چرخ فلک به کام {n} خواهد گشت و روزهای طلایی در راه است.",
+            "ای {n} گرامی، دست تقدیر برایت سرنوشتی پر از موفقیت رقم زده است.",
+            "اندوه به دل راه مده ای {n}، که خورشید کامیابی به زودی طلوع می‌کند.",
+            "پهلوان زندگی خود باش ای {n}، که پیروزی نهایی از آنِ توست."
+        ];
+
+        var fPoems = [
+            "ای گل باغ غزل، لبخندهایت ستاره باران باد! {n} عزیز، طالع امروزت سرشار از عشق است.",
+            "نسیم صبح و طراوت به نام تو زیباست {n} جان؛ خبری دلنشین و شاد در راه است.",
+            "بانوی گرامی {n}، ستاره بخت و اقبالت روشن و سرشار از مهر و آرامش است.",
+            "ای {n} مهربان، چون پروانه در روشنیِ عشق خواهی درخشید و دل‌ها را شاد می‌کنی.",
+            "گلبرگ‌های آرزوی {n} به زودی شکوفا خواهد شد و روزگار به کامت می‌شود.",
+            "ای {n}، طراوت بهار در نگاه تو ست و آینده‌ای پر از لبخند در انتظارت است.",
+            "فرشته نازنین، ای {n}، قلب پاکت راهنمای تو به سوی خوشبختی حقیقی است.",
+            "صدای پای خوشبختی برای {n} به گوش می‌رسد؛ آماده استقبال از اتفاقات عالی باش.",
+            "ای {n}، مثل یک ماه در شب تاریک می‌درخشی و نور امید را به دیگران هدیه می‌دهی.",
+            "طالع روشن {n} نشان از آرامش درون و موفقیت‌های پی در پی دارد.",
+            "ای {n} جان، لبخند تو گره‌گشای تمام سختی‌هاست؛ روزگارت پر از عطر گل سرخ باد.",
+            "دست تقدیر برای {n} عزیز لحظاتی سرشار از عشق و آرامش نوشته است.",
+            "ای {n}، ستاره‌ی بخت تو در اوج آسمان شادی و سرور قرار دارد.",
+            "شکوفه‌های خوشبختی در مسیر زندگی {n} جوانه خواهند زد.",
+            "ای بانوی باوقار، {n}، روزهای پُر از خیر و برکت و اتفاقات شگفت‌انگیز در راه داری.",
+            "پنجره‌های دلت را به سوی نور باز کن ای {n}، که روزگاری شاد در انتظارت است.",
+            "ای {n} عزیز، ترنم عشق در زندگی‌ات طنین‌انداز شده و شادی مهمان دلت می‌گردد.",
+            "صمیمیت و مهربانی {n} پاداشی بزرگ از سوی روزگار دریافت خواهد کرد.",
+            "ای {n}، مثل یک الماس درخشان در زندگی خواهی درخشد و به آرزوهایتان می‌رسی.",
+            "طالع امروز {n} پر از رنگین‌کمان امید و آرامش است؛ شاد باش."
+        ];
+
+        function runFortune() {
+            var n = document.getElementById('f-name').value.trim() || "عزیز دل";
+            var pool = (selectedGender === 'm') ? mPoems : fPoems;
+            var randomPoem = pool[Math.floor(Math.random() * pool.length)].replace(/{n}/g, n);
+            
+            document.getElementById('f-head').innerText = "✨ فال مخصوص " + n + " ✨";
+            document.getElementById('f-body').innerText = randomPoem;
+            go('p-f-res');
+        }
+
+        var persianGirlNames = ["سارا", "ملیکا", "نازنین", "پریا", "پری", "دنیا", "فاطمه", "زهرا", "عسل", "هلیا", "آیلین", "سنا", "الناز", "باران", "رها", "غزل", "مبینا", "یسنا", "نیکا", "دیانا", "مهسا", "مهدیس", "ترانه", "روژان", "آوا", "سحر", "تینا", "هستی", "کیمیا", "عطیه", "پریناز", "رویا", "مینا", "پگاه", "شکیبا"];
+        var englishGirlNames = ["Sara", "Melika", "Nazanin", "Pariya", "Pari", "Donya", "Fatemeh", "Zahra", "Asal", "Helia", "Aylin", "Sana", "Elnaz", "Baran", "Raha", "Ghazal", "Mobina", "Yasna", "Nika", "Diana", "Mahsa", "Mahdis", "Taraneh", "Rojan", "Ava", "Sahar", "Tina", "Hasti", "Kimia", "Atiyeh", "Parinaz", "Roya", "Mina", "Pegah", "Shakiba"];
+
+        var persianBoyNames = ["علی", "امیر", "رضا", "صادق", "آریان", "مهدی", "بهامین", "دانیال", "سینا", "متین", "کیان", "فرهاد", "ارشیا", "ماهان", "سهراب", "پیمان", "رامین", "بهنام", "پویا", "سروش", "شایان", "آراد", "باربد", "برسام", "پادرا", "پرهام", "توفان", "حامد", "رادوین", "روزبه", "سامان", "سیاوش", "شاهین", "شهاب", "کوروش", "مانی"];
+        var englishBoyNames = ["Ali", "Amir", "Reza", "Sadeq", "Aryan", "Mahdi", "Behamin", "Danial", "Sina", "Matin", "Kian", "Farhad", "Arshia", "Mahan", "Sohrab", "Peyman", "Ramin", "Behnam", "Pouya", "Soroush", "Shayan", "Arad", "Barbod", "Barsam", "Padra", "Parham", "Toufan", "Hamed", "Radvin", "Rouzbeh", "Saman", "Siavash", "Shahin", "Shahab", "Kourosh", "Mani"];
+
+        function checkUserTimer() {
+            var rawName = document.getElementById('c-name').value.trim();
+            var btn = document.getElementById('spin-btn');
+            var timerMsg = document.getElementById('timer-msg');
+
+            if (!rawName) {
+                btn.disabled = false;
+                btn.style.opacity = "1";
+                timerMsg.innerText = "";
+                return false;
+            }
+
+            var cleanName = rawName.toLowerCase();
+            var savedData = localStorage.getItem('spin_' + cleanName);
+
+            if (savedData) {
+                var data = JSON.parse(savedData);
+                var now = new Date().getTime();
+                var elapsed = now - data.time;
+                var twentyFourHours = 24 * 60 * 60 * 1000;
+
+                if (elapsed < twentyFourHours) {
+                    var remaining = twentyFourHours - elapsed;
+                    var hours = Math.floor(remaining / (1000 * 60 * 60));
+                    var minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+                    
+                    btn.disabled = true;
+                    btn.style.opacity = "0.5";
+                    timerMsg.innerText = "⏳ نام '" + rawName + "' تا " + hours + " ساعت و " + minutes + " دقیقه دیگر محدود است.";
+                    return true;
+                }
+            }
+
+            btn.disabled = false;
+            btn.style.opacity = "1";
+            timerMsg.innerText = "";
+            return false;
+        }
+
+        function spinWheel() {
+            var rawName = document.getElementById('c-name').value.trim();
+            if (!rawName) {
+                alert("لطفاً ابتدا نام خود را وارد کنید!");
+                return;
+            }
+            
+            if (checkUserTimer()) {
+                go('p-c-res');
+                return;
+            }
+
+            var cleanLowerName = rawName.toLowerCase();
+            var isEnglish = (rawName[0] >= 'A' && rawName[0] <= 'z');
+            var partner = "";
+
+            if (cleanLowerName === "پری" || cleanLowerName === "پري" || cleanLowerName === "پریا" || cleanLowerName === "pari" || cleanLowerName === "pariya") {
+                partner = isEnglish ? "Mahdi" : "مهدی";
+            } else if (cleanLowerName === "بهامین" || cleanLowerName === "behamin") {
+                partner = isEnglish ? "Donya" : "دنیا";
+            } else if (cleanLowerName === "دنیا" || cleanLowerName === "donya") {
+                partner = isEnglish ? "Behamin" : "بهامین";
+            } else {
+                if (coupleGender === 'm') {
+                    var pool = isEnglish ? englishGirlNames : persianGirlNames;
+                    partner = pool[Math.floor(Math.random() * pool.length)];
+                } else {
+                    var pool = isEnglish ? englishBoyNames : persianBoyNames;
+                    partner = pool[Math.floor(Math.random() * pool.length)];
+                }
+            }
+            
+            var styles = [
+                "꧁⚜️ " + rawName + " 🤍 " + partner + " ⚜️꧂",
+                "⚡ " + rawName + " ✖️ " + partner + " ⚡",
+                "💎 「 " + rawName + " & " + partner + " 」 💎",
+                "👑 " + rawName + " 💍 " + partner + " 👑",
+                "🔥 " + rawName + " ❤️ " + partner + " 🔥"
+            ];
+            var finalPair = styles[Math.floor(Math.random() * styles.length)];
+
+            var record = {
+                time: new Date().getTime(),
+                pair: finalPair
+            };
+            localStorage.setItem('spin_' + cleanLowerName, JSON.stringify(record));
+
+            go('p-c-res');
+            var resBox = document.getElementById('c-body');
+            resBox.innerHTML = "🎡 در حال چرخش گردونه شانس...";
+            resBox.className = "box spinning";
+
+            setTimeout(function() {
+                document.getElementById('c-head').innerText = "💕 نتیجه جفت‌یابی برای " + rawName;
+                resBox.innerHTML = finalPair;
+                resBox.className = "box";
+                document.getElementById('timer-msg-res').innerText = "⏳ برای این نام تا ۲۴ ساعت آینده محدودیت ثبت شد.";
+            }, 800);
+        }
+    </script>
+</body>
+</html>
